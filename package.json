@@ -10,16 +10,24 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:py-package-utility.helloWorld"
+    "onCommand:py-package-utility.createEmptyPackage"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "py-package-utility.helloWorld",
-        "title": "Hello World"
+        "command": "py-package-utility.createEmptyPackage",
+        "title": "Create Empty Package"
       }
-    ]
+    ],
+    "menus": {
+        "explorer/context": [
+            {
+                "command": "py-package-utility.createEmptyPackage",
+                "group": "navigation@99"
+            }
+        ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -41,5 +49,19 @@
     "mocha": "^10.1.0",
     "typescript": "^4.9.3",
     "@vscode/test-electron": "^2.2.0"
-  }
+  },
+  "configuration": {
+        "properties": {
+        "py-package-utility.moduleAtParent": {
+                "type": "boolean",
+                "default": true,
+                "description": "moduleAtParent"
+            },
+        "py-package-utility.innerTest": {
+                "type": "boolean",
+                "default": true,
+                "description": "innerTest"
+            }
+        }
+    }
 }
